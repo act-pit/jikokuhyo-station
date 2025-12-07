@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>時刻表のない駅で - Between Trains -</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;700&family=Courier+Prime&family=DotGothic16&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&family=Shippori+Mincho:wght@400;500;600;700;800&family=Zen+Old+Mincho:wght@400;500;600;700;900&family=Playfair+Display:wght@400;700;900&family=Courier+Prime&display=swap');
         
         * {
             margin: 0;
@@ -25,7 +25,7 @@
         }
         
         body {
-            font-family: 'Noto Sans JP', sans-serif;
+            font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
             background: var(--station-cream);
             color: var(--station-dark);
             overflow-x: hidden;
@@ -50,7 +50,7 @@
             100% { opacity: 0; transform: scale(0.5); }
         }
         
-        /* Falling Leaves with Various Shapes */
+        /* Gentle Rainfall */
         .leaves-container {
             position: fixed;
             top: 0;
@@ -64,26 +64,57 @@
         
         .leaf {
             position: absolute;
-            font-size: 20px;
+            width: 1px;
+            height: 0;
+            background: linear-gradient(to bottom, 
+                transparent 0%,
+                rgba(174, 194, 224, 0.3) 10%,
+                rgba(174, 194, 224, 0.5) 50%,
+                rgba(174, 194, 224, 0.3) 90%,
+                transparent 100%);
+            animation: lightRainfall linear infinite;
             opacity: 0.4;
-            animation: fall linear infinite;
         }
         
-        .leaf:nth-child(1) { left: 5%; animation-duration: 12s; animation-delay: 0s; }
-        .leaf:nth-child(2) { left: 15%; animation-duration: 15s; animation-delay: 2s; }
-        .leaf:nth-child(3) { left: 30%; animation-duration: 18s; animation-delay: 4s; }
-        .leaf:nth-child(4) { left: 45%; animation-duration: 14s; animation-delay: 1s; }
-        .leaf:nth-child(5) { left: 60%; animation-duration: 16s; animation-delay: 3s; }
-        .leaf:nth-child(6) { left: 75%; animation-duration: 13s; animation-delay: 5s; }
-        .leaf:nth-child(7) { left: 85%; animation-duration: 17s; animation-delay: 2.5s; }
-        .leaf:nth-child(8) { left: 95%; animation-duration: 15.5s; animation-delay: 4.5s; }
+        .leaf:nth-child(1) { left: 12%; animation-duration: 1.8s; animation-delay: 0s; }
+        .leaf:nth-child(2) { left: 25%; animation-duration: 2.2s; animation-delay: 0.5s; }
+        .leaf:nth-child(3) { left: 38%; animation-duration: 2.0s; animation-delay: 1.0s; }
+        .leaf:nth-child(4) { left: 51%; animation-duration: 2.1s; animation-delay: 0.3s; }
+        .leaf:nth-child(5) { left: 64%; animation-duration: 2.3s; animation-delay: 0.8s; }
+        .leaf:nth-child(6) { left: 77%; animation-duration: 1.9s; animation-delay: 1.3s; }
+        .leaf:nth-child(7) { left: 19%; animation-duration: 2.0s; animation-delay: 0.6s; }
+        .leaf:nth-child(8) { left: 32%; animation-duration: 2.2s; animation-delay: 1.1s; }
+        .leaf:nth-child(9) { left: 45%; animation-duration: 1.8s; animation-delay: 0.2s; }
+        .leaf:nth-child(10) { left: 58%; animation-duration: 2.1s; animation-delay: 1.4s; }
+        .leaf:nth-child(11) { left: 71%; animation-duration: 2.0s; animation-delay: 0.7s; }
+        .leaf:nth-child(12) { left: 84%; animation-duration: 2.3s; animation-delay: 1.2s; }
+        .leaf:nth-child(13) { left: 6%; animation-duration: 1.9s; animation-delay: 0.4s; }
+        .leaf:nth-child(14) { left: 90%; animation-duration: 2.1s; animation-delay: 0.9s; }
+        .leaf:nth-child(15) { left: 16%; animation-duration: 2.2s; animation-delay: 1.5s; }
+        .leaf:nth-child(16) { left: 42%; animation-duration: 1.8s; animation-delay: 0.1s; }
+        .leaf:nth-child(17) { left: 68%; animation-duration: 2.0s; animation-delay: 1.6s; }
+        .leaf:nth-child(18) { left: 94%; animation-duration: 2.3s; animation-delay: 0.5s; }
+        .leaf:nth-child(19) { left: 29%; animation-duration: 2.1s; animation-delay: 1.0s; }
+        .leaf:nth-child(20) { left: 55%; animation-duration: 1.9s; animation-delay: 0.3s; }
         
-        @keyframes fall {
-            0% { top: -10%; transform: translateX(0) rotate(0deg); }
-            25% { transform: translateX(30px) rotate(90deg); }
-            50% { transform: translateX(-30px) rotate(180deg); }
-            75% { transform: translateX(30px) rotate(270deg); }
-            100% { top: 110%; transform: translateX(0) rotate(360deg); }
+        @keyframes lightRainfall {
+            0% { 
+                top: -10%; 
+                height: 12px;
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.4;
+                height: 12px;
+            }
+            100% { 
+                top: 110%; 
+                height: 12px;
+                opacity: 0;
+            }
         }
         
         /* Parallax Stars Background */
@@ -123,6 +154,194 @@
             justify-content: center;
             text-align: center;
             overflow: hidden;
+        }
+        
+        /* Fog Overlay */
+        .fog-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to top, 
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0.15) 30%,
+                transparent 100%);
+            pointer-events: none;
+            z-index: 2;
+            animation: fogMove 15s ease-in-out infinite;
+        }
+        
+        @keyframes fogMove {
+            0%, 100% { opacity: 0.3; transform: translateX(0); }
+            50% { opacity: 0.5; transform: translateX(50px); }
+        }
+        
+        .fog-overlay::before,
+        .fog-overlay::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, 
+                rgba(245, 239, 224, 0.2) 0%,
+                transparent 50%);
+        }
+        
+        .fog-overlay::before {
+            animation: fogDrift1 20s ease-in-out infinite;
+        }
+        
+        .fog-overlay::after {
+            animation: fogDrift2 25s ease-in-out infinite reverse;
+        }
+        
+        @keyframes fogDrift1 {
+            0%, 100% { transform: translateX(0) scale(1); }
+            50% { transform: translateX(-100px) scale(1.1); }
+        }
+        
+        @keyframes fogDrift2 {
+            0%, 100% { transform: translateX(0) scale(1); }
+            50% { transform: translateX(100px) scale(1.15); }
+        }
+        
+        /* Realistic Street Lamps */
+        .street-lamp {
+            position: absolute;
+            bottom: 150px;
+            z-index: 3;
+        }
+        
+        .street-lamp.left { left: 8%; }
+        .street-lamp.right { right: 8%; }
+        
+        /* Lamp Post */
+        .lamp-post {
+            position: relative;
+            width: 8px;
+            height: 120px;
+            background: linear-gradient(to right, #2d2416 0%, #3d3020 50%, #2d2416 100%);
+            border-radius: 4px;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.5), 2px 0 5px rgba(0,0,0,0.3);
+        }
+        
+        .lamp-post::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 6px;
+            background: #4d4030;
+            border-radius: 2px;
+        }
+        
+        /* Lamp Arm */
+        .lamp-arm {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 35px;
+            height: 6px;
+            background: linear-gradient(to right, #3d3020 0%, #2d2416 100%);
+            border-radius: 3px;
+            transform-origin: left center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+        
+        /* Lamp Shade */
+        .lamp-shade {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 30px;
+            height: 35px;
+            background: linear-gradient(to bottom, 
+                #1a1810 0%,
+                #2a2418 30%,
+                #3d3020 100%);
+            border-radius: 0 0 15px 15px;
+            box-shadow: 
+                inset 0 -5px 10px rgba(0,0,0,0.5),
+                0 3px 8px rgba(0,0,0,0.6);
+        }
+        
+        .lamp-shade::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 32px;
+            height: 8px;
+            background: #1a1410;
+            border-radius: 4px 4px 0 0;
+        }
+        
+        /* Light Bulb Glow */
+        .lamp-light {
+            position: absolute;
+            bottom: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, 
+                rgba(255, 230, 180, 1) 0%,
+                rgba(255, 220, 150, 0.8) 30%,
+                rgba(255, 210, 120, 0.3) 60%,
+                transparent 100%);
+            border-radius: 50%;
+            animation: lampGlow 3s ease-in-out infinite;
+            filter: blur(1px);
+        }
+        
+        @keyframes lampGlow {
+            0%, 100% { 
+                opacity: 0.9;
+                box-shadow: 0 0 15px rgba(255, 220, 150, 0.6),
+                            0 0 30px rgba(255, 210, 120, 0.4);
+            }
+            50% { 
+                opacity: 1;
+                box-shadow: 0 0 25px rgba(255, 220, 150, 0.8),
+                            0 0 50px rgba(255, 210, 120, 0.6);
+            }
+        }
+        
+        /* Light Cone */
+        .lamp-light::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-top: 120px solid rgba(255, 220, 150, 0.12);
+            filter: blur(3px);
+        }
+        
+        /* Light Reflection on Ground */
+        .lamp-light::after {
+            content: '';
+            position: absolute;
+            top: 130px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 30px;
+            background: radial-gradient(ellipse, 
+                rgba(255, 220, 150, 0.15) 0%,
+                rgba(255, 220, 150, 0.05) 50%,
+                transparent 100%);
+            border-radius: 50%;
+            filter: blur(5px);
         }
         
         /* Animated Train */
@@ -180,6 +399,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             animation: clockPulse 2s ease-in-out infinite;
+            z-index: 10;
         }
         
         .station-clock:hover {
@@ -276,12 +496,13 @@
         }
         
         .hero-subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.6rem);
+            font-family: 'Playfair Display', 'Noto Serif JP', serif;
+            font-size: clamp(1.2rem, 3vw, 2rem);
             color: var(--station-gold);
-            font-weight: 300;
-            margin-bottom: 30px;
-            letter-spacing: 0.3em;
+            font-weight: 400;
             font-style: italic;
+            margin-bottom: 30px;
+            letter-spacing: 0.2em;
             opacity: 0.9;
             animation: fadeSlide 1s ease-out 0.5s backwards;
         }
@@ -294,7 +515,7 @@
         .hero-dates {
             font-size: clamp(0.9rem, 2vw, 1.2rem);
             color: var(--station-cream);
-            line-height: 1.8;
+            line-height: 2;
             font-weight: 300;
             padding: 20px 30px;
             background: rgba(255, 255, 255, 0.05);
@@ -304,6 +525,8 @@
             display: inline-block;
             animation: fadeSlide 1s ease-out 1s backwards;
             transition: all 0.3s ease;
+            letter-spacing: 0.15em;
+            word-spacing: 0.4em;
         }
         
         .hero-dates:hover {
@@ -312,56 +535,35 @@
             box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
         }
         
-        /* Animated Ticket Stub */
-        .ticket-stub {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--station-cream);
-            padding: 12px 30px;
-            border: 2px dashed var(--station-rust);
-            border-radius: 8px;
-            font-family: 'Courier Prime', monospace;
-            font-size: 0.9rem;
-            color: var(--station-dark);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            animation: float 3s ease-in-out infinite;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .ticket-stub:hover {
-            background: var(--station-gold);
-            color: white;
-            transform: translateX(-50%) scale(1.1);
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-15px); }
-        }
-        
         /* Section Base */
         section {
-            padding: 60px 5%;
+            padding: 100px 5%;
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .section-title {
-            font-family: 'Noto Serif JP', serif;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-family: 'Zen Old Mincho', 'Noto Serif JP', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
             font-weight: 700;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
             position: relative;
             display: inline-block;
             left: 50%;
             transform: translateX(-50%);
             cursor: pointer;
             transition: all 0.3s ease;
+            letter-spacing: 0.08em;
         }
         
         .section-title:hover {
@@ -391,10 +593,10 @@
         .section-title::before { left: -40px; }
         .section-title::after { right: -40px; }
         
-        /* Flyer Section with 3D Frames */
+        /* Flyer Section with 3D Frames & Lightbox */
         .flyer-section {
             background: var(--station-brown);
-            padding: 70px 5%;
+            padding: 100px 5%;
             position: relative;
         }
         
@@ -432,6 +634,7 @@
             border-radius: 4px;
             transition: all 0.5s ease;
             transform-style: preserve-3d;
+            cursor: pointer;
         }
         
         .flyer-frame:hover {
@@ -440,7 +643,7 @@
         }
         
         .flyer-frame::before {
-            content: '📌';
+            content: '';
             position: absolute;
             top: -20px;
             left: 50%;
@@ -467,6 +670,64 @@
             filter: sepia(0) brightness(1.1);
         }
         
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            animation: zoomIn 0.3s ease;
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 90vh;
+            box-shadow: 0 0 50px rgba(212, 165, 116, 0.5);
+            border: 5px solid var(--station-cream);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lightbox-close:hover {
+            color: var(--station-gold);
+            transform: rotate(90deg);
+        }
+        
         /* Story Section with Vintage Paper */
         .story-section {
             background: var(--station-cream);
@@ -480,10 +741,11 @@
         }
         
         .story-quote {
-            font-family: 'Noto Serif JP', serif;
+            font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
             font-size: clamp(1rem, 2.2vw, 1.4rem);
             line-height: 2.2;
             text-align: center;
+            white-space: nowrap;
             color: var(--station-dark);
             font-weight: 500;
             padding: 40px 30px;
@@ -542,31 +804,102 @@
             color: var(--station-rust);
         }
         
-        /* Info Section with Interactive Cards */
+        /* Info Section - REDESIGNED */
         .info-section {
             background: white;
-            padding: 50px 5%;
+            padding: 100px 5%;
         }
         
-        .info-compact {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            max-width: 900px;
+        .info-showcase {
+            max-width: 1000px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
         }
         
-        .info-box {
+        .info-date-center {
+            text-align: center;
+            background: linear-gradient(135deg, var(--station-cream) 0%, #fff 100%);
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+        
+        .info-date-center:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+        }
+        
+        .info-date-center::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2.5rem;
+            opacity: 0.2;
+        }
+        
+        .info-bottom-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .date-range {
+            font-size: 2rem;
+            color: var(--station-rust);
+            font-weight: 700;
+            margin-bottom: 30px;
+            font-family: 'Zen Old Mincho', 'Noto Serif JP', serif;
+        }
+        
+        .date-details {
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 25px 30px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            border-left: 4px solid var(--station-gold);
+        }
+        
+        .date-item {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .date-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .date-day {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--station-rust);
+            margin-bottom: 5px;
+        }
+        
+        .date-times {
+            font-size: 0.95rem;
+            color: var(--station-dark);
+            padding-left: 20px;
+        }
+        
+        .info-side-box {
             background: linear-gradient(135deg, var(--station-cream) 0%, #fff 100%);
             padding: 30px;
             border-left: 4px solid var(--station-gold);
+            border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
         
-        .info-box::before {
+        .info-side-box::before {
             content: attr(data-icon);
             position: absolute;
             top: 20px;
@@ -576,19 +909,18 @@
             transition: all 0.4s ease;
         }
         
-        .info-box:hover {
+        .info-side-box:hover {
             transform: translateY(-10px) scale(1.03);
             box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-            background: linear-gradient(135deg, var(--station-gold) 0%, var(--station-cream) 100%);
         }
         
-        .info-box:hover::before {
+        .info-side-box:hover::before {
             font-size: 4rem;
             opacity: 0.25;
             transform: rotate(15deg);
         }
         
-        .info-box h3 {
+        .info-side-box h3 {
             font-size: 1.1rem;
             font-weight: 700;
             margin-bottom: 12px;
@@ -596,165 +928,120 @@
             transition: color 0.3s ease;
         }
         
-        .info-box:hover h3 {
+        .info-side-box:hover h3 {
             color: var(--station-dark);
         }
         
-        .info-box p {
+        .info-side-box p {
             font-size: 0.95rem;
             line-height: 1.8;
         }
         
-        /* Cast Section - Departure Board Style */
+        /* Cast Section - Departure Board Style with Flip Animation */
         .cast-section {
-            background: var(--station-brown);
-            color: var(--station-cream);
-            padding: 70px 5%;
+            background: linear-gradient(135deg, #e8dcc8 0%, #d4c4a8 50%, #c9b896 100%);
+            color: var(--station-dark);
+            padding: 100px 5%;
             position: relative;
             overflow: hidden;
         }
         
         .cast-section .section-title {
-            color: var(--station-cream);
-            margin-bottom: 50px;
+            color: var(--station-rust);
+            margin-bottom: 60px;
         }
         
         /* Departure Board Container */
         .departure-board {
             max-width: 1100px;
             margin: 0 auto;
-            background: linear-gradient(to bottom, #0d1f15 0%, var(--board-green) 50%, #0d1f15 100%);
-            border: 15px solid #2a2418;
+            background: linear-gradient(to bottom, #3d3020 0%, #2a2418 50%, #3d3020 100%);
+            border: 15px solid #8b5a3c;
             border-radius: 10px;
             padding: 40px 30px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.8), inset 0 0 50px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3), inset 0 0 50px rgba(0,0,0,0.2);
             position: relative;
-        }
-        
-        .departure-board::before {
-            content: '🚉 時刻表のない駅 - 本日の出演者 🚉';
-            position: absolute;
-            top: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--board-orange);
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-shadow: 0 0 10px var(--board-orange);
-            letter-spacing: 0.1em;
         }
         
         /* Board Header */
         .board-header {
             display: grid;
-            grid-template-columns: 80px 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 15px;
             padding: 15px 20px;
-            background: rgba(0,0,0,0.3);
-            border-bottom: 2px solid var(--board-orange);
+            background: rgba(0,0,0,0.2);
+            border-bottom: 2px solid var(--station-gold);
             margin-bottom: 10px;
             font-weight: 700;
             font-size: 0.95rem;
-            color: var(--board-orange);
-            text-shadow: 0 0 8px var(--board-orange);
+            color: white;
+            text-shadow: 0 0 5px rgba(139, 90, 60, 0.3);
         }
         
-        /* Board Rows */
+        /* Board Rows with Flip Animation */
         .board-row {
             display: grid;
-            grid-template-columns: 80px 1fr 1fr 1fr;
-            gap: 15px;
-            padding: 18px 20px;
-            background: rgba(0,0,0,0.2);
-            border-bottom: 1px solid rgba(255, 149, 0, 0.2);
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px 25px;
+            background: white;
+            border-bottom: 1px solid #e0d5c0;
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
-            overflow: hidden;
+            margin-bottom: 8px;
+            border-radius: 6px;
         }
         
         .board-row:hover {
-            background: rgba(255, 149, 0, 0.15);
+            background: #fef9f0;
             transform: translateX(5px);
-            box-shadow: 0 0 20px rgba(255, 149, 0, 0.3);
-        }
-        
-        .board-row::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: var(--board-orange);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .board-row:hover::before {
-            opacity: 1;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
         
         .board-cell {
-            color: var(--board-orange);
-            font-family: 'Courier Prime', monospace;
-            font-size: 0.95rem;
-            text-shadow: 0 0 5px rgba(255, 149, 0, 0.5);
+            color: var(--station-dark);
+            font-family: 'Shippori Mincho', serif;
+            font-size: 1rem;
             display: flex;
             align-items: center;
-            animation: flickerIn 0.5s ease backwards;
+            line-height: 1.6;
         }
         
-        .board-row:nth-child(1) .board-cell { animation-delay: 0.1s; }
-        .board-row:nth-child(2) .board-cell { animation-delay: 0.2s; }
-        .board-row:nth-child(3) .board-cell { animation-delay: 0.3s; }
-        .board-row:nth-child(4) .board-cell { animation-delay: 0.4s; }
-        .board-row:nth-child(5) .board-cell { animation-delay: 0.5s; }
-        .board-row:nth-child(6) .board-cell { animation-delay: 0.6s; }
-        .board-row:nth-child(7) .board-cell { animation-delay: 0.7s; }
-        .board-row:nth-child(8) .board-cell { animation-delay: 0.8s; }
-        .board-row:nth-child(9) .board-cell { animation-delay: 0.9s; }
-        .board-row:nth-child(10) .board-cell { animation-delay: 1s; }
-        .board-row:nth-child(11) .board-cell { animation-delay: 1.1s; }
-        .board-row:nth-child(12) .board-cell { animation-delay: 1.2s; }
-        .board-row:nth-child(13) .board-cell { animation-delay: 1.3s; }
-        .board-row:nth-child(14) .board-cell { animation-delay: 1.4s; }
-        
-        @keyframes flickerIn {
-            0% { opacity: 0; }
-            20% { opacity: 1; }
-            40% { opacity: 0.3; }
-            60% { opacity: 1; }
-            80% { opacity: 0.5; }
-            100% { opacity: 1; }
+        /* Row Flip Animation */
+        .board-row.flip-row {
+            animation: flipRow 0.8s ease-in-out;
         }
         
-        .time-cell {
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 0.1em;
+        @keyframes flipRow {
+            0% { transform: scaleY(1); opacity: 1; }
+            45% { transform: scaleY(0.1); opacity: 0.5; }
+            55% { transform: scaleY(0.1); opacity: 0.5; }
+            100% { transform: scaleY(1); opacity: 1; }
         }
         
         .character-cell {
-            font-weight: 700;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--station-rust);
         }
         
         .occupation-cell {
             font-weight: 400;
-            color: #ffb84d;
+            color: var(--station-rust);
             font-size: 0.9rem;
         }
         
-        .actor-cell {
-            font-weight: 400;
-            line-height: 1.6;
+        /* 職業列を完全に非表示 */
+        .occupation-cell {
+            display: none;
         }
         
-        .actor-multi {
-            font-size: 0.85rem;
-            opacity: 0.8;
-            display: block;
-            margin-top: 2px;
+        .actor-cell {
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.6;
+            color: var(--station-dark);
         }
         
         /* Random Flicker Effect */
@@ -771,7 +1058,7 @@
         /* Staff Section */
         .staff-section {
             background: var(--station-cream);
-            padding: 60px 5%;
+            padding: 100px 5%;
         }
         
         .staff-compact {
@@ -834,10 +1121,10 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
         
-        /* Ticket Section with 3D Cards */
+        /* Ticket Section with Slide-Up Cards */
         .ticket-section {
             background: white;
-            padding: 60px 5%;
+            padding: 100px 5%;
         }
         
         .ticket-grid {
@@ -846,19 +1133,25 @@
             gap: 30px;
             max-width: 900px;
             margin: 0 auto 50px;
-            perspective: 1000px;
         }
         
+        /* Slide-Up Card */
         .ticket-card {
+            position: relative;
             background: var(--station-cream);
             padding: 30px;
             border: 3px dashed var(--station-rust);
             border-radius: 12px;
-            position: relative;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            transition: all 0.5s ease;
-            transform-style: preserve-3d;
+            overflow: hidden;
             cursor: pointer;
+            transition: all 0.4s ease;
+            min-height: 320px;
+        }
+        
+        .ticket-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
         }
         
         .ticket-card::before,
@@ -871,16 +1164,12 @@
             border-radius: 50%;
             top: 50%;
             transform: translateY(-50%);
+            z-index: 1;
             transition: all 0.3s ease;
         }
         
         .ticket-card::before { left: -12px; }
         .ticket-card::after { right: -12px; }
-        
-        .ticket-card:hover {
-            transform: translateY(-15px) rotateY(5deg) rotateX(5deg);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
         
         .ticket-card:hover::before {
             left: -15px;
@@ -894,17 +1183,48 @@
             height: 30px;
         }
         
+        .ticket-card-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .ticket-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(212, 165, 116, 0.95), rgba(139, 90, 60, 0.9));
+            color: white;
+            padding: 25px 30px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            z-index: 3;
+            border-top: 2px solid var(--station-gold);
+        }
+        
+        .ticket-card:hover .ticket-card-overlay {
+            transform: translateY(0);
+        }
+        
+        .overlay-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .overlay-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
         .ticket-type {
             font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 12px;
             color: var(--station-rust);
-            font-family: 'Noto Serif JP', serif;
-            transition: all 0.3s ease;
-        }
-        
-        .ticket-card:hover .ticket-type {
-            transform: scale(1.1);
+            font-family: 'Zen Old Mincho', 'Noto Serif JP', serif;
         }
         
         .ticket-price {
@@ -946,7 +1266,7 @@
         }
         
         .cta-button::before {
-            content: '🎫';
+            content: '';
             position: absolute;
             left: 25px;
             font-size: 1.5rem;
@@ -992,7 +1312,7 @@
         /* Access Section */
         .access-section {
             background: var(--station-cream);
-            padding: 50px 5%;
+            padding: 100px 5%;
         }
         
         .access-box {
@@ -1016,7 +1336,7 @@
             font-weight: 700;
             margin-bottom: 18px;
             color: var(--station-rust);
-            font-family: 'Noto Serif JP', serif;
+            font-family: 'Zen Old Mincho', 'Noto Serif JP', serif;
         }
         
         .venue-info {
@@ -1057,7 +1377,7 @@
         }
         
         .footer-title {
-            font-family: 'Noto Serif JP', serif;
+            font-family: 'Zen Old Mincho', 'Noto Serif JP', serif;
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 10px;
@@ -1114,11 +1434,156 @@
             opacity: 0.5;
         }
         
+        /* Profile Popup */
+        .profile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .profile-overlay.active {
+            display: flex;
+        }
+        
+        .profile-popup {
+            background: linear-gradient(135deg, var(--station-cream) 0%, #fff 100%);
+            border: 3px solid var(--station-gold);
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            animation: slideUp 0.4s ease;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .profile-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 2rem;
+            color: var(--station-rust);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(139, 90, 60, 0.1);
+        }
+        
+        .profile-close:hover {
+            background: var(--station-rust);
+            color: white;
+            transform: rotate(90deg);
+        }
+        
+        .profile-cast-name {
+            font-family: 'Zen Old Mincho', 'Noto Serif JP', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--station-dark);
+            margin-bottom: 10px;
+            border-bottom: 3px solid var(--station-gold);
+            padding-bottom: 10px;
+        }
+        
+        .profile-role {
+            font-size: 1.2rem;
+            color: var(--station-rust);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .profile-section {
+            margin-bottom: 20px;
+        }
+        
+        .profile-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--station-rust);
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .profile-content {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--station-dark);
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            border-left: 4px solid var(--station-gold);
+        }
+        
+        .profile-sns {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(212, 165, 116, 0.3);
+        }
+        
+        .sns-link {
+            flex: 1;
+            padding: 12px 20px;
+            background: var(--station-rust);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .sns-link:hover {
+            background: var(--station-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .sns-link.disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        .sns-link.disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
+            .story-quote {
+                white-space: normal;
+                line-height: 2;
+            }
+            
             .hero {
                 height: 90vh;
                 min-height: 550px;
+            }
+            
+            .street-lamp {
+                display: none;
             }
             
             .station-clock {
@@ -1134,7 +1599,12 @@
             }
             
             section {
-                padding: 50px 5%;
+                padding: 80px 5%;
+            }
+            
+            .section-title {
+                font-size: clamp(1.8rem, 5vw, 2.2rem);
+                margin-bottom: 50px;
             }
             
             .section-title::before,
@@ -1142,16 +1612,69 @@
                 font-size: 1rem;
             }
             
-            .board-header,
-            .board-row {
-                grid-template-columns: 60px 1fr;
-                gap: 10px;
-                padding: 12px 15px;
-                font-size: 0.85rem;
+            .info-showcase {
+                gap: 20px;
             }
             
-            .occupation-cell,
+            .info-date-center {
+                padding: 40px 30px;
+            }
+            
+            .info-bottom-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .date-range {
+                font-size: 1.5rem;
+            }
+            
+            .date-details {
+                padding: 20px;
+            }
+            
+            .board-header {
+                display: none;
+            }
+            
+            .board-row {
+                grid-template-columns: 1fr;
+                gap: 3px;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .board-cell {
+                display: block;
+            }
+            
+            .character-cell {
+                font-size: 0.8rem;
+                font-weight: 500;
+                color: var(--station-rust);
+                opacity: 0.8;
+                order: 1;
+                line-height: 1.3;
+            }
+            
             .actor-cell {
+                display: block;
+                font-size: 1.05rem;
+                font-weight: 700;
+                order: 2;
+                line-height: 1.4;
+            }
+            
+            .occupation-cell {
+                font-size: 0.7rem;
+                font-weight: 400;
+                opacity: 0.6;
+                order: 3;
+                line-height: 1.3;
+            }
+        
+            .occupation-cell {
                 display: none;
             }
             
@@ -1164,8 +1687,7 @@
                 top: 10px;
             }
             
-            .staff-compact,
-            .info-compact {
+            .staff-compact {
                 grid-template-columns: 1fr;
             }
             
@@ -1178,6 +1700,28 @@
             .staff-role {
                 min-width: auto;
             }
+            
+            .ticket-card {
+                height: 320px;
+            }
+            
+            .lightbox-close {
+                top: -40px;
+                right: 0;
+                font-size: 2rem;
+            }
+            
+            .profile-popup {
+                padding: 30px 25px;
+            }
+            
+            .profile-cast-name {
+                font-size: 1.5rem;
+            }
+            
+            .profile-sns {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -1185,27 +1729,60 @@
     <!-- Stars Background -->
     <div class="stars" id="starsContainer"></div>
 
-    <!-- Falling Leaves -->
+    <!-- Gentle Rainfall -->
     <div class="leaves-container">
-        <div class="leaf">🍂</div>
-        <div class="leaf">🍁</div>
-        <div class="leaf">🍂</div>
-        <div class="leaf">🍁</div>
-        <div class="leaf">🍂</div>
-        <div class="leaf">🍁</div>
-        <div class="leaf">🍂</div>
-        <div class="leaf">🍁</div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
     </div>
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="fog-overlay"></div>
+        
+        <div class="street-lamp left">
+            <div class="lamp-post">
+                <div class="lamp-arm">
+                    <div class="lamp-shade">
+                        <div class="lamp-light"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="street-lamp right">
+            <div class="lamp-post">
+                <div class="lamp-arm">
+                    <div class="lamp-shade">
+                        <div class="lamp-light"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div class="railway-track"></div>
         <div class="smoke" style="left: 15%; top: 60%; animation-delay: 0s;"></div>
         <div class="smoke" style="right: 10%; top: 50%; animation-delay: 4s;"></div>
         <div class="smoke" style="left: 50%; top: 55%; animation-delay: 7s;"></div>
         
         <div class="train-container">
-            <div class="train">🚂💨</div>
+            <div class="train"></div>
         </div>
         
         <div class="station-clock" onclick="alert('時刻表のない駅へようこそ！\n時間に縛られない、ゆっくりとした時間をお過ごしください。')">
@@ -1219,13 +1796,9 @@
             <h1>時刻表のない駅で</h1>
             <p class="hero-subtitle">- Between Trains -</p>
             <div class="hero-dates">
-                2026.02.14 FRI - 15 SUN<br>
+                2026.02.14 SAT - 15 SUN<br>
                 アカルスタジオ
             </div>
-        </div>
-        
-        <div class="ticket-stub" onclick="smoothScroll('ticket-section')">
-            ↓ チケット情報はこちら ↓
         </div>
     </section>
 
@@ -1233,14 +1806,22 @@
     <section class="flyer-section">
         <h2 class="section-title">VISUAL</h2>
         <div class="flyer-container">
-            <div class="flyer-frame">
+            <div class="flyer-frame" onclick="openLightbox('https://www.genspark.ai/api/files/s/gPyJmrsr')">
                 <img src="https://www.genspark.ai/api/files/s/gPyJmrsr" alt="フライヤー1" class="flyer-image">
             </div>
-            <div class="flyer-frame">
+            <div class="flyer-frame" onclick="openLightbox('https://www.genspark.ai/api/files/s/Sb4qAyDH')">
                 <img src="https://www.genspark.ai/api/files/s/Sb4qAyDH" alt="フライヤー2" class="flyer-image">
             </div>
         </div>
     </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-content">
+            <span class="lightbox-close" onclick="closeLightbox()">×</span>
+            <img src="" alt="拡大画像" class="lightbox-image" id="lightboxImage">
+        </div>
+    </div>
 
     <!-- Story Section -->
     <section class="story-section">
@@ -1251,7 +1832,7 @@
                 心が折れそうな時は、立ち止まる勇気の方が、ずっと価値があるんだよ。
             </div>
             <p class="story-text">
-                誰もが急ぎ足で通り過ぎる駅。時刻表に縛られ、次の電車を待つ人々。しかし、この駅には時刻表がない。ここでは時間が、いつもと違う速さで流れている。偶然この駅で出会った人々は、それぞれに心の傷を抱え、人生の岐路に立たされている。焦りと不安の中で見失いかけた大切なもの。立ち止まることを忘れた現代人への優しいメッセージ。
+                会社で、学校で、バイトで、夢の途中で・・・。ここでは、時間がいつもと違う速さで流れている。偶然この駅で出会った人々は、それぞれに心の傷を抱え、人生の岐路に立たされている。焦りと不安の中で見失いかけた大切なものー。立ち止まることを忘れた現代人への優しいメッセージをお届け。
             </p>
         </div>
     </section>
@@ -1259,30 +1840,39 @@
     <!-- Info Section -->
     <section class="info-section">
         <h2 class="section-title">INFORMATION</h2>
-        <div class="info-compact">
-            <div class="info-box" data-icon="📅">
-                <h3>公演日程</h3>
-                <p>
-                    2026年2月14日(金) 12:00~/16:00~<br>
-                    2026年2月15日(土) 12:00~/16:00~<br>
-                    2026年2月15日(日) 12:00~/16:00~
-                </p>
+        <div class="info-showcase">
+            <div class="info-date-center">
+                <div class="date-range">2026年2月14日(土)-15日(日)</div>
+                <div class="date-details">
+                    <div class="date-item">
+                        <div class="date-day">2026年2月14日(土)</div>
+                        <div class="date-times">昼公演 12:00開演 / 夜公演 16:00開演</div>
+                    </div>
+                    <div class="date-item">
+                        <div class="date-day">2026年2月15日(日)</div>
+                        <div class="date-times">昼公演 12:00開演 / 夜公演 16:00開演</div>
+                    </div>
+                </div>
             </div>
-            <div class="info-box" data-icon="📍">
-                <h3>会場</h3>
-                <p>
-                    アカルスタジオ<br>
-                    〒556-0017 大阪府大阪市浪速区湊町1-3-1<br>
-                    湊町リバープレイス1F
-                </p>
-            </div>
-            <div class="info-box" data-icon="🎫">
-                <h3>チケット販売</h3>
-                <p>
-                    2025年12月11日(水) 10:00~<br>
-                    ACTぴっとにて販売開始<br>
-                    <a href="https://act-pit.com/events/view/?eid=NcjsWsdr" style="color: #8b5a3c; font-weight: 700;" target="_blank">→ 購入ページ</a>
-                </p>
+            
+            <div class="info-bottom-row">
+                <div class="info-side-box" data-icon="">
+                    <h3>会場</h3>
+                    <p>
+                        アカルスタジオ<br>
+                        〒556-0017 大阪府大阪市浪速区湊町1-3-1<br>
+                        湊町リバープレイス1F
+                    </p>
+                </div>
+                
+                <div class="info-side-box" data-icon="">
+                    <h3>チケット販売</h3>
+                    <p>
+                        2025年12月14日(日)10:00~<br>
+                        ACTぴっとにて販売開始<br>
+                        <a href="https://act-pit.com/events/view/?eid=NcjsWsdr" style="color: #8b5a3c; font-weight: 700;" target="_blank">→ 購入ページ</a>
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -1293,145 +1883,134 @@
         
         <div class="departure-board">
             <div class="board-header">
-                <div>時刻</div>
-                <div>キャラクター</div>
-                <div>職業</div>
-                <div>出演者</div>
+                <div>役名</div>
+                <div>キャスト名</div>
             </div>
             
-            <div class="board-row">
-                <div class="board-cell time-cell">--:--</div>
-                <div class="board-cell character-cell">山咲 遥</div>
-                <div class="board-cell occupation-cell">OL</div>
+            <div class="board-row" data-cast="室井花枝">
+                <div class="board-cell character-cell">遥</div>
                 <div class="board-cell actor-cell">室井花枝</div>
             </div>
             
-            <div class="board-row">
-                <div class="board-cell time-cell">--:--</div>
-                <div class="board-cell character-cell">大西 裕貴</div>
-                <div class="board-cell occupation-cell">サラリーマン</div>
+            <div class="board-row" data-cast="相樂和希">
+                <div class="board-cell character-cell">山本 雄大</div>
                 <div class="board-cell actor-cell">相樂和希</div>
             </div>
             
-            <div class="board-row">
-                <div class="board-cell time-cell">--:--</div>
+            <div class="board-row" data-cast="紗莉">
                 <div class="board-cell character-cell">安達 美紗</div>
-                <div class="board-cell occupation-cell">看護師</div>
                 <div class="board-cell actor-cell">紗莉</div>
             </div>
             
-            <div class="board-row">
-                <div class="board-cell time-cell">--:--</div>
+            <div class="board-row" data-cast="山西祐希／陸野将">
                 <div class="board-cell character-cell">平川 隆之介</div>
-                <div class="board-cell occupation-cell">大学生</div>
-                <div class="board-cell actor-cell">山西祐希<span class="actor-multi">陸野将</span></div>
+                <div class="board-cell actor-cell">山西祐希／陸野将</div>
             </div>
             
-            <div class="board-row">
-                <div class="board-cell time-cell">--:--</div>
+            <div class="board-row" data-cast="松浦未空">
                 <div class="board-cell character-cell">神林 里美</div>
-                <div class="board-cell occupation-cell">主婦</div>
                 <div class="board-cell actor-cell">松浦未空</div>
             </div>
             
-            <div class="board-row">
-                <div class="board-cell time-cell">--:--</div>
+            <div class="board-row" data-cast="安永日和">
                 <div class="board-cell character-cell">美川 すず</div>
-                <div class="board-cell occupation-cell">占い師</div>
                 <div class="board-cell actor-cell">安永日和</div>
             </div>
             
-            <div class="board-row">
-                <div class="board-cell time-cell">--:--</div>
+            <div class="board-row" data-cast="風間なぎさ／城ノ下明鈴">
                 <div class="board-cell character-cell">佐藤 澪</div>
-                <div class="board-cell occupation-cell">フリーター</div>
-                <div class="board-cell actor-cell">風間なぎさ<span class="actor-multi">城ノ下明鈴</span></div>
+                <div class="board-cell actor-cell">風間なぎさ／城ノ下明鈴</div>
             </div>
             
-            <div class="board-row">
-                <div class="board-cell time-cell">--:--</div>
+            <div class="board-row" data-cast="川村朱麗／大田綾">
                 <div class="board-cell character-cell">村川 美々杏</div>
-                <div class="board-cell occupation-cell">画家</div>
-                <div class="board-cell actor-cell">川村朱麗<span class="actor-multi">大田綾</span></div>
+                <div class="board-cell actor-cell">川村朱麗／大田綾</div>
             </div>
             
-            <div class="board-row">
-                <div class="board-cell time-cell">--:--</div>
+            <div class="board-row" data-cast="東未結">
                 <div class="board-cell character-cell">大谷 美優</div>
-                <div class="board-cell occupation-cell">会社員</div>
                 <div class="board-cell actor-cell">東未結</div>
             </div>
             
-            <div class="board-row">
-                <div class="board-cell time-cell">--:--</div>
+            <div class="board-row" data-cast="平田明日香／角はるな">
                 <div class="board-cell character-cell">木本 翔子</div>
-                <div class="board-cell occupation-cell">教師</div>
-                <div class="board-cell actor-cell">平田明日香<span class="actor-multi">角はるな</span></div>
+                <div class="board-cell actor-cell">平田明日香／角はるな</div>
             </div>
             
-            <div class="board-row">
-                <div class="board-cell time-cell">--:--</div>
+            <div class="board-row" data-cast="多田綾香／やのゆな">
                 <div class="board-cell character-cell">伝宝 うらら</div>
-                <div class="board-cell occupation-cell">ピアニスト</div>
-                <div class="board-cell actor-cell">多田綾香<span class="actor-multi">やのゆな</span></div>
+                <div class="board-cell actor-cell">多田綾香／やのゆな</div>
             </div>
             
-            <div class="board-row">
-                <div class="board-cell time-cell">--:--</div>
+            <div class="board-row" data-cast="もりちよ米／陣内菜津芽">
                 <div class="board-cell character-cell">緑川 紀子</div>
-                <div class="board-cell occupation-cell">書店員</div>
-                <div class="board-cell actor-cell">もりちよ米<span class="actor-multi">陣内菜津芽</span></div>
+                <div class="board-cell actor-cell">もりちよ米／陣内菜津芽</div>
             </div>
             
-            <div class="board-row">
-                <div class="board-cell time-cell">--:--</div>
+            <div class="board-row" data-cast="長谷川和音">
                 <div class="board-cell character-cell">森本 美香</div>
-                <div class="board-cell occupation-cell">カフェ店員</div>
                 <div class="board-cell actor-cell">長谷川和音</div>
             </div>
             
-            <div class="board-row">
-                <div class="board-cell time-cell">--:--</div>
+            <div class="board-row" data-cast="岡本一馬">
                 <div class="board-cell character-cell">駅長</div>
-                <div class="board-cell occupation-cell">駅長</div>
                 <div class="board-cell actor-cell">岡本一馬</div>
             </div>
         </div>
     </section>
+
+    <!-- Profile Popup -->
+    <div class="profile-overlay" id="profileOverlay" onclick="closeProfile(event)">
+        <div class="profile-popup" onclick="event.stopPropagation()">
+            <div class="profile-close" onclick="closeProfile()">&times;</div>
+            <div class="profile-cast-name" id="profileCastName">室井花枝</div>
+            <div class="profile-role" id="profileRole">役名：遥</div>
+            
+            <div class="profile-section">
+                <span class="profile-label">キャストからのコメント</span>
+                <div class="profile-content" id="profileComment">Coming Soon...</div>
+            </div>
+            
+            <div class="profile-sns">
+                <a href="#" class="sns-link disabled" id="profileInstagram">Instagram</a>
+                <a href="#" class="sns-link disabled" id="profileTwitter">Twitter</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Staff Section -->
     <section class="staff-section">
         <h2 class="section-title">STAFF</h2>
         <div class="staff-compact">
             <div class="staff-item">
-                <div class="staff-role">プロデューサー</div>
-                <div class="staff-name">大村哲子</div>
-            </div>
-            <div class="staff-item">
                 <div class="staff-role">脚本・演出</div>
                 <div class="staff-name">岡本一馬</div>
             </div>
             <div class="staff-item">
                 <div class="staff-role">音響</div>
-                <div class="staff-name">藤田宏宗</div>
+                <div class="staff-name">藤田宏章</div>
             </div>
             <div class="staff-item">
                 <div class="staff-role">照明</div>
-                <div class="staff-name">かざちあき</div>
+                <div class="staff-name">かどちあき</div>
             </div>
             <div class="staff-item">
                 <div class="staff-role">映像</div>
-                <div class="staff-name">みくど</div>
+                <div class="staff-name">みくと</div>
             </div>
             <div class="staff-item">
                 <div class="staff-role">フライヤーデザイン</div>
                 <div class="staff-name">岡本一馬</div>
             </div>
+            <div class="staff-item">
+                <div class="staff-role">プロデューサー</div>
+                <div class="staff-name">大村玲子</div>
+            </div>
         </div>
         <div class="staff-note">
-            <strong>協力：</strong>株式会社ACTMENT PARK、株式会社エイチエム アールアンドシー、ベニラ・モデルマネージメント、総合学園ヒューマンアカデミー、ホリプロスターズスタジオ、ワタナベエデュケーショングループ
+            <strong>協力:</strong>株式会社ACTMENT PARK、株式会社エイチエスプロモーション、バニラ・モデルマネージメント、総合学園ヒューマンアカデミー、ホリプロスタースタジオ、ワタナベエデュケーショングループ
             <br><br>
-            <strong>主催：</strong>アカルプロジェクト
+            <strong>主催:</strong>アカルプロジェクト
         </div>
     </section>
 
@@ -1440,36 +2019,65 @@
         <h2 class="section-title">TICKET</h2>
         <div class="ticket-grid">
             <div class="ticket-card">
-                <div class="ticket-type">A席</div>
-                <div class="ticket-price">¥5,500</div>
-                <div class="ticket-details">
-                    前方10席限定の特別席<br>
-                    座席番号は公演日間近に通知
+                <div class="ticket-card-content">
+                    <div class="ticket-type">A席</div>
+                    <div class="ticket-price">¥5,500</div>
+                    <div class="ticket-details">
+                        前方10席限定の特別席<br>
+                        座席番号は公演日間近に通知
+                    </div>
+                    <div class="ticket-note">
+                        販売:2025/12/14～2026/02/15
+                    </div>
                 </div>
-                <div class="ticket-note">
-                    販売：2025/12/14～2026/02/15
-                </div>
-            </div>
-            <div class="ticket-card">
-                <div class="ticket-type">B席</div>
-                <div class="ticket-price">¥3,300</div>
-                <div class="ticket-details">
-                    座席番号は公演日間近に通知<br>
-                    マイページでご確認ください
-                </div>
-                <div class="ticket-note">
-                    販売：2025/12/14～2026/02/15
+                <div class="ticket-card-overlay">
+                    <div class="overlay-title">🎭 プレミアム体験</div>
+                    <div class="overlay-text">
+                        舞台に最も近い特別席。<br>
+                        役者の息遣いまで感じられる臨場感。
+                    </div>
                 </div>
             </div>
+            
             <div class="ticket-card">
-                <div class="ticket-type">配信</div>
-                <div class="ticket-price">¥3,300</div>
-                <div class="ticket-details">
-                    アーカイブ配信（生配信なし）<br>
-                    2/28(土)23:59まで視聴可能
+                <div class="ticket-card-content">
+                    <div class="ticket-type">B席</div>
+                    <div class="ticket-price">¥3,300</div>
+                    <div class="ticket-details">
+                        座席番号は公演日間近に通知<br>
+                        マイページでご確認ください
+                    </div>
+                    <div class="ticket-note">
+                        販売:2025/12/14～2026/02/15
+                    </div>
                 </div>
-                <div class="ticket-note">
-                    販売：2025/12/14～2026/02/28 17:00
+                <div class="ticket-card-overlay">
+                    <div class="overlay-title"> スタンダード席</div>
+                    <div class="overlay-text">
+                        全体が見渡せるバランスの良い席。<br>
+                        舞台全体をゆったりとお楽しみください。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ticket-card">
+                <div class="ticket-card-content">
+                    <div class="ticket-type">配信</div>
+                    <div class="ticket-price">¥3,300</div>
+                    <div class="ticket-details">
+                        アーカイブ配信(生配信なし)<br>
+                        2/28(土)23:59まで視聴可能
+                    </div>
+                    <div class="ticket-note">
+                        販売:2025/12/14～2026/02/28
+                    </div>
+                </div>
+                <div class="ticket-card-overlay">
+                    <div class="overlay-title">📺 おうちで観劇</div>
+                    <div class="overlay-text">
+                        ご自宅で何度でも視聴可能。<br>
+                        お好きな時間にお楽しみください。
+                    </div>
                 </div>
             </div>
         </div>
@@ -1498,11 +2106,66 @@
     <footer>
         <div class="footer-title">時刻表のない駅で</div>
         <div class="footer-subtitle">- Between Trains -</div>
-        <p class="footer-info">主催：<a href="https://act-pit.com/events/view/?eid=NcjsWsdr" class="footer-link" target="_blank">株式会社アカルプロジェクト</a></p>
+        <p class="footer-info">主催:<a href="https://akaru-project.co.jp/" class="footer-link" target="_blank">株式会社アカルプロジェクト</a></p>
         <p class="footer-copyright">© 2026 ACAL PROJECT All Rights Reserved.</p>
     </footer>
 
     <script>
+        // キャストプロフィールデータ
+        const castProfiles = {
+            '室井花枝': { role: '遥', comment: 'Coming Soon...', instagram: '', twitter: '' },
+            '相樂和希': { role: '山本 雄大', comment: 'Coming Soon...', instagram: '', twitter: '' },
+            '紗莉': { role: '安達 美紗', comment: 'Coming Soon...', instagram: '', twitter: '' },
+            '山西祐希／陸野将': { role: '平川 隆之介', comment: 'Coming Soon...', instagram: '', twitter: '' },
+            '松浦未空': { role: '神林 里美', comment: 'Coming Soon...', instagram: '', twitter: '' },
+            '安永日和': { role: '美川 すず', comment: 'Coming Soon...', instagram: '', twitter: '' },
+            '風間なぎさ／城ノ下明鈴': { role: '佐藤 澪', comment: 'Coming Soon...', instagram: '', twitter: '' },
+            '川村朱麗／大田綾': { role: '村川 美々杏', comment: 'Coming Soon...', instagram: '', twitter: '' },
+            '東未結': { role: '大谷 美優', comment: 'Coming Soon...', instagram: '', twitter: '' },
+            '平田明日香／角はるな': { role: '木本 翔子', comment: 'Coming Soon...', instagram: '', twitter: '' },
+            '多田綾香／やのゆな': { role: '伝宝 うらら', comment: 'Coming Soon...', instagram: '', twitter: '' },
+            'もりちよ米／陣内菜津芽': { role: '緑川 紀子', comment: 'Coming Soon...', instagram: '', twitter: '' },
+            '長谷川和音': { role: '森本 美香', comment: 'Coming Soon...', instagram: '', twitter: '' },
+            '岡本一馬': { role: '駅長', comment: 'Coming Soon...', instagram: '', twitter: '' }
+        };
+
+        // プロフィールポップアップ表示
+        function showProfile(castName) {
+            const profile = castProfiles[castName];
+            if (!profile) return;
+            
+            document.getElementById('profileCastName').textContent = castName;
+            document.getElementById('profileRole').textContent = `役名:${profile.role}`;
+            document.getElementById('profileComment').textContent = profile.comment;
+            
+            const instagramLink = document.getElementById('profileInstagram');
+            const twitterLink = document.getElementById('profileTwitter');
+            
+            if (profile.instagram) {
+                instagramLink.href = profile.instagram;
+                instagramLink.classList.remove('disabled');
+            } else {
+                instagramLink.href = '#';
+                instagramLink.classList.add('disabled');
+            }
+            
+            if (profile.twitter) {
+                twitterLink.href = profile.twitter;
+                twitterLink.classList.remove('disabled');
+            } else {
+                twitterLink.href = '#';
+                twitterLink.classList.add('disabled');
+            }
+            
+            document.getElementById('profileOverlay').classList.add('active');
+        }
+
+        // プロフィールポップアップ閉じる
+        function closeProfile(event) {
+            if (event && event.target.classList.contains('profile-popup')) return;
+            document.getElementById('profileOverlay').classList.remove('active');
+        }
+
         // Create Stars
         function createStars() {
             const container = document.getElementById('starsContainer');
@@ -1558,44 +2221,73 @@
             });
         });
         
-        // Intersection Observer for Animations
+        // Scroll Animation Observer
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
 
         document.querySelectorAll('section').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             observer.observe(el);
         });
         
+        // Lightbox Functions
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            lightboxImage.src = imageSrc;
+            lightbox.classList.add('active');
+        }
+        
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+        }
+        
+        // Departure Board Row Flip Animation
+        function flipRandomBoardRow() {
+            const rows = document.querySelectorAll('.board-row');
+            if (rows.length === 0) return;
+            
+            const randomIndex = Math.floor(Math.random() * rows.length);
+            const selectedRow = rows[randomIndex];
+            
+            selectedRow.classList.add('flip-row');
+            setTimeout(() => {
+                selectedRow.classList.remove('flip-row');
+            }, 800);
+        }
+        
+        setInterval(flipRandomBoardRow, 4000 + Math.random() * 3000);
+        
         // Easter Egg: Click on title multiple times
         let clickCount = 0;
-        document.querySelector('.hero h1').addEventListener('click', () => {
-            clickCount++;
-            if (clickCount === 5) {
-                alert('🎭✨ あなたは真の演劇ファンですね！\n公演の成功を心よりお祈りしています！');
-                clickCount = 0;
-            }
-        });
+        const heroTitle = document.querySelector('.hero h1');
+        if (heroTitle) {
+            heroTitle.addEventListener('click', () => {
+                clickCount++;
+                if (clickCount === 5) {
+                    alert('🎭✨ あなたは真の演劇ファンですね！\n公演の成功を心よりお祈りしています!');
+                    clickCount = 0;
+                }
+            });
+        }
         
-        // Departure Board Row Click
+        // Departure Board Row Click - プロフィールポップアップ表示
         document.querySelectorAll('.board-row').forEach(row => {
             row.addEventListener('click', () => {
-                const character = row.querySelector('.character-cell').textContent;
-                const actor = row.querySelector('.actor-cell').textContent;
-                alert(`🚉 ${character}\n演じる: ${actor}\n\nこの列車は時刻表のない駅に停車中です。`);
+                const castName = row.getAttribute('data-cast');
+                if (castName) {
+                    showProfile(castName);
+                }
             });
         });
     </script>
